@@ -1,8 +1,8 @@
 ﻿using MiniAmazonSimulation.Data.Model;
 
-namespace MiniAmazonSimulation.Data.Repositories
+namespace MiniAmazonSimulation.Services
 {
-    public interface IClientRepo
+    public interface IClientService
     {
         int AddClient(Client client);
         Client GetClient(int id);

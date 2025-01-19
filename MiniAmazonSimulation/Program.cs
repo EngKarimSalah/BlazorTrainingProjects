@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MiniAmazonSimulation.Components;
+using MiniAmazonSimulation.Data.Repositories;
+using MiniAmazonSimulation.Services;
 
 namespace MiniAmazonSimulation
 {
@@ -17,7 +19,22 @@ namespace MiniAmazonSimulation
 
                   );
 
+            //Services registeration
+            builder.Services.AddScoped<IUserRepo, UserRepo>();
+            builder.Services.AddScoped<ISellerRepo, SellerRepo>();  
+            builder.Services.AddScoped<IClientRepo, ClientRepo>();
+            builder.Services.AddScoped<IProductRepo, ProductRepo>();
+            builder.Services.AddScoped<IProductReviewRepo, ProductReviewRepo>();
+            builder.Services.AddScoped<IProductImagesRepo, ProductImagesRepo>();
+            builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
 
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ISellerService, SellerService>();
+            builder.Services.AddScoped<IClientService, ClientService>();    
+            builder.Services.AddScoped<IProductService, ProductService>();  
+            builder.Services.AddScoped<IProductReviewSerice, ProductReviewSerice>();
+            builder.Services.AddScoped<IProductImagesService, ProductImagesService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
 
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();

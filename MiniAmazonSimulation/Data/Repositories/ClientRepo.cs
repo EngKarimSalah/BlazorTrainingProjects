@@ -25,7 +25,7 @@ namespace MiniAmazonSimulation.Data.Repositories
 
         }
 
-        public Client GetUser(int id)
+        public Client GetClient(int id)
         {
             return _context.Clients.FirstOrDefault(x => x.CId == id);
         }

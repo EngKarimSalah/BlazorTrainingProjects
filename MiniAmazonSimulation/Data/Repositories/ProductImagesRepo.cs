@@ -2,7 +2,7 @@
 
 namespace MiniAmazonSimulation.Data.Repositories
 {
-    public class ProductImagesRepo
+    public class ProductImagesRepo : IProductImagesRepo
     {
         private readonly ApplicationDbContext _context;
         public ProductImagesRepo(ApplicationDbContext context)
@@ -24,9 +24,9 @@ namespace MiniAmazonSimulation.Data.Repositories
             }
         }
 
-        public IQueryable<ProductImages> GetImages(int prid) 
+        public IQueryable<ProductImages> GetImages(int prid)
         {
-            return _context.ProductImages.Where(images=>images.ProductId==prid);
+            return _context.ProductImages.Where(images => images.ProductId == prid);
         }
 
         public ProductImages GetFirstImages(int prid)
