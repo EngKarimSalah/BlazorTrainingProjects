@@ -6,5 +6,6 @@ namespace MiniAmazonSimulation.Data.Repositories
     {
         int AddUser(User user);
         User GetUser(int id);
+        User Login(string email, string password);
     }
 }

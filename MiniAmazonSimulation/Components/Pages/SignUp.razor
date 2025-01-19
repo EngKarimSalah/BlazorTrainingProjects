@@ -1,0 +1,77 @@
+﻿@page "/SignUp"
+@inject NavigationManager Navigation
+@inject IUserService UserService
+@inject ICompoundServices compoundService
+@inject ICountriesService countriesServie
+
+<EditForm Model="newUser" OnValidSubmit="RegisterUser">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="productName">Name</label>
+        <InputText id="productName" class="form-control" @bind-Value="newUser.Username" />
+    </div>
+
+    <div class="mb-3">
+        <label for="userEmail">Email</label>
+        <InputText id="userEmail" class="form-control" @bind-Value="newUser.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label for="productDescription">Password</label>
+        <InputTextArea id="productDescription" class="form-control" @bind-Value="newUser.Password" />
+    </div>
+
+
+    <div class="mb-3">
+        <label for="RoleSelect">Select Role</label>
+        <select id="RoleSelect" @bind="newUser.Role" required>
+            <option value="" disabled>Select a role</option>
+            <option value="Client">Client</option>
+            <option value="Seller">Seller</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="countrySelect">Select Country</label>
+        <select id="countrySelect" @bind="newUser.Country" required>
+            <option value="" disabled>Select a country</option>
+            @if (countries != null && countries.Any())
+            {
+                @foreach (var country in countries)
+                {
+                    <option value="@country">@country</option>
+                }
+            }
+            else
+            {
+                <option value="" disabled>Loading countries...</option>
+            }
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Add user</button>
+</EditForm>
+
+
+@code {
+
+    private List<string> countries = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Fetch the list of countries using your CountryService
+        countries = await countriesServie.GetCountriesAsync();
+    }
+
+    private User newUser = new User();  
+    private  void RegisterUser()
+    {
+        Log.Information($"Received SignUp request - Email: {newUser.Email}, Password: {newUser.Username}");
+
+        int result = compoundService.AddUser(newUser);
+        Navigation.NavigateTo("/SignIn");
+    }
+}

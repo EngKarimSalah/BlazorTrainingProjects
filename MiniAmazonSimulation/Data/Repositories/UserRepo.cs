@@ -30,6 +30,11 @@ namespace MiniAmazonSimulation.Data.Repositories
             return _context.Users.FirstOrDefault(x => x.UId == id);
         }
 
+        public User Login(string email, string password)
+        {
+
+            return _context.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        }
 
     }
 }

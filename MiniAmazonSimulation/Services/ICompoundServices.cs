@@ -2,11 +2,8 @@
 
 namespace MiniAmazonSimulation.Services
 {
-    public interface IUserService
+    public interface ICompoundServices
     {
         int AddUser(User user);
-        User GetUser(int id);
-
-        User Login(string email, string password);
     }
 }

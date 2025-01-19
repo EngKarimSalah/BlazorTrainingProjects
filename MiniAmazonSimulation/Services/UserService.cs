@@ -21,5 +21,10 @@ namespace MiniAmazonSimulation.Services
 
             return _userRepo.GetUser(id);
         }
+
+        public User Login(string email, string password)
+        {
+            return _userRepo.Login(email, password);
+        }
     }
 }
