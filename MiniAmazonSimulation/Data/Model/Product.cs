@@ -22,6 +22,7 @@ namespace MiniAmazonSimulation.Data.Model
         [Range(0, int.MaxValue, ErrorMessage = "Stock cannot be negative.")]
         public int Stock { get; set; }
 
+
        [ForeignKey("category")]
         public int CategoryId { get; set; }
         public Category category { get; set; } // Foreign key to Category
@@ -30,9 +31,9 @@ namespace MiniAmazonSimulation.Data.Model
         public int SellerId { get; set; }
         public Seller seller { get; set; } // Foreign key to Seller
 
-        public ICollection<ProductReview> ProductReviews { get; set; } // One-to-Many relationship
+        public virtual ICollection<ProductReview> ProductReviews { get; set; } // One-to-Many relationship
 
-
+        public virtual ICollection<ProductImages> ProductImages { get; set; }
 
     }
 }

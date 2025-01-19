@@ -19,7 +19,7 @@ namespace MiniAmazonSimulation.Data.Model
         [Range(0.01, double.MaxValue, ErrorMessage = "Total amount must be greater than 0.")]
         public decimal TotalAmount { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; } // One-to-Many relationship
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; } // One-to-Many relationship
     
 }
 }

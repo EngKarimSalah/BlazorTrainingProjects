@@ -11,6 +11,6 @@ namespace MiniAmazonSimulation.Data.Model
         [StringLength(12, ErrorMessage = "Category name cannot exceed 12 characters.")]
         public string Name { get; set; }
 
-        public ICollection<Product> Products { get; set; } // One-to-Many relationship
+        public virtual ICollection<Product> Products { get; set; } // One-to-Many relationship
     }
 }
