@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MiniAmazonSimulation.Components;
 using MiniAmazonSimulation.Data.Repositories;
 using MiniAmazonSimulation.Services;
+using MudBlazor.Services;
 
 namespace MiniAmazonSimulation
 {
@@ -35,6 +36,8 @@ namespace MiniAmazonSimulation
             builder.Services.AddScoped<IProductReviewSerice, ProductReviewSerice>();
             builder.Services.AddScoped<IProductImagesService, ProductImagesService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+            builder.Services.AddMudServices();
 
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
